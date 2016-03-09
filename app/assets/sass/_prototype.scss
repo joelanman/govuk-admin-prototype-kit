@@ -1,0 +1,148 @@
+.form-date {
+
+  .form-group {
+    float: left;
+    width: 50px;
+
+    margin-right: 10px;
+    margin-bottom: 0;
+    clear: none;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .form-group-year {
+    width: 70px;
+  }
+
+  .form-group-spacer {
+    margin-right: 20px;
+  }
+}
+
+// Use .grid-row to define a row for grid columns to sit in
+%grid-row {
+  @extend %contain-floats;
+  margin: 0 (-$gutter-half);
+}
+
+.grid-row {
+  @extend %grid-row;
+}
+
+.tag-explorer {
+  @extend %contain-floats;
+
+  .tag-container {
+    // width: 50%;
+    // float: left;
+    max-height: 30em;
+    overflow: scroll;
+
+    .checkbox {
+      margin-top: 0;
+    }
+
+    .return-arrow {
+      display: none;
+      margin-right: 5px;
+    }
+
+    .forward-arrow {
+      color: #737373;
+      position: absolute;
+      right: 10px;
+      line-height: 2.5em;
+    }
+
+    .active {
+      .return-arrow {
+        display: inline;
+      }
+
+      .forward-arrow {
+        display: none;
+      }
+    }
+
+    .matched-search label {
+      font-weight: bold;
+    }
+
+    .no-search-match .topic-child-title {
+      //color: #555;
+    }
+  }
+}
+
+form {
+  fieldset.panel-group {
+    padding-top: 27px;
+    border-top: 1px solid #eee;
+
+    legend {
+      font-size: 21px;
+
+      &.panel-title {
+        padding-top: 0;
+        border-top: none;
+      }
+    }
+  }
+
+  details {
+    summary {
+      font-size: 21px;
+      padding-top: 0;
+      border-top: none;
+      text-decoration: underline;
+    }
+  }
+}
+
+.chosen-disabled {
+  opacity: 1 !important;
+}
+
+.notice {
+  padding: 1em;
+  margin-bottom: 1em;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.comma-separated-list {
+  list-style: none;
+  padding-left: 0;
+
+  li {
+    display: inline;
+
+    &:after {
+      content: ", ";
+    }
+
+    &:last-child:after {
+      content: "";
+    }
+
+    &:nth-last-child(2):after {
+      content: " and ";
+    }
+  }
+}
+
+a[rel="external"]:after {
+  content: image-url("preview-external-link.png");
+  margin-right: 0.2em;
+  margin-left: -0.2em;
+}
