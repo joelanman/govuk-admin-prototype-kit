@@ -1,0 +1,14 @@
+{% extends "layout_admin.html" %}
+
+{% block content %}
+
+<div class="row">
+  <section class="col-md-8">
+    {% block main_column %}{% endblock %}
+  </section>
+  <div class="col-md-4">
+    {% block side_bar %}{% endblock %}
+  </div>
+</div>
+
+{% endblock %}
