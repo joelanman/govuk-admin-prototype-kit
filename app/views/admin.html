@@ -20,18 +20,19 @@
     <form class="edition-form js-edition-form" id="new_edition" enctype="multipart/form-data" action="/government/admin/detailed-guides" accept-charset="UTF-8" method="post">
 
       <fieldset>
-        <%= render 'partials/publication_type' %>
+        {% include "includes/publication_type.html" %}
+        
 
-        <%= render 'partials/title' %>
+        {% include "includes/title.html" %}
 
-        <%= render 'partials/summary' %>
+        {% include "includes/summary.html" %}
 
-        <%= render 'partials/body' %>
+        {% include "includes/body.html" %}
       </fieldset>
 
-      <%= render 'partials/first_published' %>
+      {% include "includes/first_published.html" %}
 
-      <%= render 'partials/images' %>
+      {% include "includes/images.html" %}
 
       <fieldset>
         <legend>Associations</legend>
@@ -40,9 +41,9 @@
           <p>Document tagging has moved from the create and edit document pages. Click the "Tag Document" button at the end of the page to tag this document.</p>
         </div>
 
-        <%= render 'partials/statistical_data_set' %>
+        {% include "includes/statistical_data_set.html" %}
 
-        <%= render 'partials/topical_event' %>
+        {% include "includes/topical_event.html" %}
 
 
       </fieldset>
@@ -54,11 +55,11 @@
         </p>
       </fieldset>
 
-      <%= render 'partials/excluded_nations' %>
+      {% include "includes/excluded_nations.html" %}
 
-      <%= render 'partials/access_limiting' %>
+      {% include "includes/access_limiting.html" %}
 
-      <%= render 'partials/scheduled_publication' %>
+      {% include "includes/scheduled_publication.html" %}
 
       <div class="publishing-controls well">
         <div class="form-actions">
@@ -75,4 +76,9 @@
 
 {% endblock %}
 
+{% block side_bar %}
+
+  {% include "includes/sidebar.html" %}
+
+{% endblock %}
 
