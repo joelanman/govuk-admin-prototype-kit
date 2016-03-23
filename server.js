@@ -10,6 +10,30 @@ var path = require('path'),
     port = (process.env.PORT || config.port),
     utils = require(__dirname + '/lib/utils.js'),
     packageJson = require(__dirname + '/package.json'),
+    Mincer  = require('mincer');
+
+  Mincer.logger.use({
+    error: function(msg) {
+      console.error('ERROR:', msg);
+    },
+    log: function(msg) {
+      console.error('LOG:', msg);
+    },
+    debug: function(msg) {
+      console.error('DEBUG:', msg);
+    }
+  });
+
+  var environment = new Mincer.Environment();
+
+  environment.appendPath('app/assets/javascripts/vendor');
+  environment.appendPath('govuk_modules/govuk_admin_template/app/assets');
+  environment.appendPath('govuk_modules/govuk_admin_template/app/assets/javascripts');
+  environment.appendPath('govuk_modules/jquery-rails-3.1.3/vendor/assets/javascripts');
+  environment.appendPath('node_modules/bootstrap-sass/assets/javascripts');
+
+  app.use('/public', Mincer.createServer(environment));
+
 
 // Grab environment variables specified in Procfile or as Heroku config vars
     releaseVersion = packageJson.version;
