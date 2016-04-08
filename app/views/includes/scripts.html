@@ -1,5 +1,15 @@
 <!-- Javascript -->
 <script src="/public/javascripts/details.polyfill.js"></script>
-<script src="/public/javascripts/jquery-1.11.3.js"></script>
+<script src="/public/javascripts/jquery.js"></script>
 <script src="/public/javascripts/govuk/selection-buttons.js"></script>
+
+<script src="/public/javascripts/govuk-admin-template.js"></script>
 <script src="/public/javascripts/application.js"></script>
+<script src="/public/javascripts/admin.js"></script>
+<script src="/public/javascripts/elements.js"></script>
+<script src="/public/javascripts/prototype.js"></script>
+<script>
+$(function() {
+	GOVUK.init(GOVUK.adminGlobalInitialiser);
+});
+</script>

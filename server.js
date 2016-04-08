@@ -12,6 +12,15 @@ var path = require('path'),
     packageJson = require(__dirname + '/package.json'),
     Mincer  = require('mincer');
 
+  // Middleware to serve static assets
+  app.use('/public', express.static(__dirname + '/public'));
+  app.use('/public', express.static(__dirname + '/govuk_modules/govuk_template/assets'));
+  app.use('/public', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit'));
+  app.use('/public/images/icons', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit/images'));
+
+  // Elements refers to icon folder instead of images folder
+  app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images','favicon.ico')));
+
   Mincer.logger.use({
     error: function(msg) {
       console.error('ERROR:', msg);
@@ -26,10 +35,15 @@ var path = require('path'),
 
   var environment = new Mincer.Environment();
 
+  environment.appendPath('app/assets/javascripts');
   environment.appendPath('app/assets/javascripts/vendor');
+  environment.appendPath('lib/admin');
+  environment.appendPath('govuk_modules/govuk_frontend_toolkit/javascripts');
   environment.appendPath('govuk_modules/govuk_admin_template/app/assets');
   environment.appendPath('govuk_modules/govuk_admin_template/app/assets/javascripts');
   environment.appendPath('govuk_modules/jquery-rails-3.1.3/vendor/assets/javascripts');
+  environment.appendPath('govuk_modules/jquery-ui-rails-5.0.5/app/assets/javascripts');
+  environment.appendPath('govuk_modules/shared_mustache-0.2.1/vendor/assets/javascripts');
   environment.appendPath('node_modules/bootstrap-sass/assets/javascripts');
 
   app.use('/public', Mincer.createServer(environment));
@@ -61,14 +75,6 @@ nunjucks.setup({
   noCache: true
 }, app);
 
-// Middleware to serve static assets
-app.use('/public', express.static(__dirname + '/public'));
-app.use('/public', express.static(__dirname + '/govuk_modules/govuk_template/assets'));
-app.use('/public', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit'));
-app.use('/public/images/icons', express.static(__dirname + '/govuk_modules/govuk_frontend_toolkit/images'));
-
-// Elements refers to icon folder instead of images folder
-app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images','favicon.ico')));
 
 // Support for parsing data in POSTs
 app.use(bodyParser.json());
