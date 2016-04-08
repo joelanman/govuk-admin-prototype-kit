@@ -39,11 +39,11 @@ var path = require('path'),
   environment.appendPath('app/assets/javascripts/vendor');
   environment.appendPath('lib/admin');
   environment.appendPath('govuk_modules/govuk_frontend_toolkit/javascripts');
-  environment.appendPath('govuk_modules/govuk_admin_template/app/assets');
-  environment.appendPath('govuk_modules/govuk_admin_template/app/assets/javascripts');
-  environment.appendPath('govuk_modules/jquery-rails-3.1.3/vendor/assets/javascripts');
-  environment.appendPath('govuk_modules/jquery-ui-rails-5.0.5/app/assets/javascripts');
-  environment.appendPath('govuk_modules/shared_mustache-0.2.1/vendor/assets/javascripts');
+  environment.appendPath('lib/govuk_admin_template/app/assets');
+  environment.appendPath('lib/govuk_admin_template/app/assets/javascripts');
+  environment.appendPath('lib/jquery-rails-3.1.3/vendor/assets/javascripts');
+  environment.appendPath('lib/jquery-ui-rails-5.0.5/app/assets/javascripts');
+  environment.appendPath('lib/shared_mustache-0.2.1/vendor/assets/javascripts');
   environment.appendPath('node_modules/bootstrap-sass/assets/javascripts');
 
   app.use('/public', Mincer.createServer(environment));

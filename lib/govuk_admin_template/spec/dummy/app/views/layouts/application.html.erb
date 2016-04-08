@@ -1,0 +1,24 @@
+<%# blocks for govuk_admin_template %>
+<% content_for :page_title do %>page_title<% end %>
+<%# app_title can be set here or in the config %>
+<% content_for :app_title do %>GOV.UK app_title<% end %>
+<% content_for :app_home_path, govuk_admin_template_engine_path %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+<% end %>
+
+<% content_for :navbar_items do %>
+  <li>
+    <a href="#">navbar_item</a>
+  </li>
+<% end %>
+<% content_for :navbar_right do %><a href="/">navbar_right</a><% end %>
+
+<% content_for :footer_top do %>footer_top<% end %>
+<% content_for :footer_version do %>footer_version<% end %>
+<% content_for :body_start do %>body_start<% end %>
+<% content_for :body_end do %>body_end<% end %>
+
+<%# use the govuk_admin_template layout %>
+<%= render :template => 'layouts/govuk_admin_template' %>
