@@ -41,4 +41,16 @@ router.get('/examples/over-18', function (req, res) {
 
 // add your routes here
 
+router.get('/tagging', function(req,res){
+
+  var organisations = require(__dirname+'/data/organisations');
+  var ministers = require(__dirname+'/data/ministers');
+  var topics = require(__dirname+'/data/topics');
+
+  console.log(JSON.stringify(topics, null, '  '));
+
+  res.render('tagging',{organisations: organisations, ministers: ministers, topics: topics});
+
+});
+
 module.exports = router;

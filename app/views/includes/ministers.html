@@ -1,0 +1,12 @@
+{% macro ministers(ministers) %}
+
+	<label for="edition_edition[lead_organisation_ids][]">Ministers</label>
+
+	<select multiple="multiple" name="edition[lead_organisation_ids][]" id="edition_lead_organisation_ids_1" class="chzn-select form-control" data-placeholder="Choose ministers…">
+	  <option value=""></option>
+	  {% for minister in ministers.results %}
+	  	<option value="{{ minister['slug'] }}">{{minister['title']}}</option>
+	  {% endfor %}
+	</select>
+
+{% endmacro %}

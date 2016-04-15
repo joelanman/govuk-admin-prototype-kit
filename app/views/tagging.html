@@ -1,0 +1,55 @@
+{% extends "layout_two_column.html" %}
+
+{% from "includes/organisations.html" import organisations as drawOrganisations %}
+
+{% from "includes/ministers.html" import ministers as drawMinisters %}
+
+{% from "includes/topic_subtopic.html" import topic_subtopic as drawTopicSubtopic %}
+
+{% block head %}
+  {% include "includes/head.html" %}
+{% endblock %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block main_column %}
+
+<h1>Tag publication</h1>
+
+<div class="tabbable">
+  <div class="tab-content">
+    <form class="edition-form js-edition-form" id="new_edition" enctype="multipart/form-data" action="/government/admin/detailed-guides" accept-charset="UTF-8" method="post">
+
+      {{ drawOrganisations(organisations) }}
+
+      {{ drawMinisters(ministers) }}
+
+      {% include "includes/policies.html" %}
+
+      {{ drawTopicSubtopic(topics) }}
+
+      <div class="publishing-controls well">
+        <div class="form-actions">
+          <a href="/publication/review" class="btn btn-primary btn-lg">Save</a>
+          <a href="#" class="btn btn-primary btn-lg">Save and continue</a>
+
+          <span class="or_cancel"> or <a href="#">cancel</a></span>
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block side_bar %}
+
+  {% include "includes/sidebar.html" %}
+
+{% endblock %}
+

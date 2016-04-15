@@ -1,0 +1,23 @@
+{% macro organisations(organisations) %}
+
+  <label for="edition_edition[lead_organisation_ids][]" class="required">Organisations <span>*</span></label>
+
+  <select multiple="multiple" name="edition[lead_organisation_ids][]" id="edition_lead_organisation_ids_1" class="chzn-select form-control" data-placeholder="Choose organisations…">
+    <option value=""></option>
+    {% for org in organisations.results %}
+    {% set acronym = org['organisations'][0]['acronym'] %}
+    <option value="{{ org['slug'] }}">{{ org['title'] }} {{acronym}}</option>
+    {% endfor %}
+  </select>
+
+  <label for="edition_edition[supporting_organisation_ids][]">Supporting organisations</label>
+
+  <select multiple="multiple" name="edition[supporting_organisation_ids][]" id="edition_supporting_organisation_ids_1" class="chzn-select form-control" data-placeholder="Choose organisations…">
+    <option value=""></option>
+    {% for org in organisations.results %}
+    {% set acronym = org['organisations'][0]['acronym'] %}
+    <option value="{{ org['slug'] }}">{{ org['title'] }} {{acronym}}</option>
+    {% endfor %}
+  </select>
+
+{% endmacro %}
