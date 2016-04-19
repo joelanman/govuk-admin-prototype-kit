@@ -45,11 +45,13 @@ router.get('/tagging', function(req,res){
 
   var organisations = require(__dirname+'/data/organisations');
   var ministers = require(__dirname+'/data/ministers');
+  var policies = require(__dirname+'/data/policies').results;
+  var policyAreas = require(__dirname+'/data/policy_areas').results;
   var topics = require(__dirname+'/data/topics');
 
   console.log(JSON.stringify(topics, null, '  '));
 
-  res.render('tagging',{organisations: organisations, ministers: ministers, topics: topics});
+  res.render('tagging',{organisations: organisations, ministers: ministers, topics: topics, policies: policies, policyAreas: policyAreas});
 
 });
 
