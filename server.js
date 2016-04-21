@@ -45,6 +45,7 @@ var path = require('path'),
   environment.appendPath('lib/jquery-ui-rails-5.0.5/app/assets/javascripts');
   environment.appendPath('lib/shared_mustache-0.2.1/vendor/assets/javascripts');
   environment.appendPath('node_modules/bootstrap-sass/assets/javascripts');
+  environment.appendPath('node_modules/bootstrap-sass/assets');
 
   app.use('/public', Mincer.createServer(environment));
 
