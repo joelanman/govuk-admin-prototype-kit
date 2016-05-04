@@ -6,13 +6,13 @@
     </legend>
 
     <p class="lead add-top-margin add-bottom-margin">
-      Tag this item if you want it to appear on a <a href="https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#specialist-tagging-topics">topic page</a>. Items tagged to a <a href="#">curated topic</a> will not appear automatically - tag, publish, then <a href="https://www.gov.uk/guidance/contact-the-government-digital-service/how-to-contact-gds#how-to-contact-gds-about-govuk">contact GDS</a> to have this item added to a curated topic.
+      This makes content appear on <a href="https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#specialist-tagging-topics">topic pages</a>.
     </p>
 
     <div class="suggested-topics">
-      <h3>Suggested topics</h3>
+      <h4>Suggested</h4>
 
-      <p>Your organisation usually tags to:</p>
+      <!-- <p>Your organisation usually tags to:</p> -->
 
       <ul class="suggested-topics-list">
         <li>
@@ -32,7 +32,7 @@
         </li>
       </ul>
 
-      <p><a href="#" class="btn btn-default" id="suggested-topics-select">Select these topics</a> or choose more from below.</p>
+<!--       <p><a href="#" class="btn btn-default" id="suggested-topics-select">Select these topics</a> or choose more from below.</p> -->
     </div>
 
     <div class="row">
@@ -44,15 +44,30 @@
           </div>
 
           <div class="tag-container list-group tag-explorer-topics-level-1">
+
+          {% for topic in topics %}
+
+              {% for subtopic in topic['links']['children'] %}
+
+                {% set curated = (subtopic['details']['groups'].length > 0) %}
+                <div class="js-topic-child list-group-item no-search-match checkbox" id="{{ subtopic['base_path'].replace(r/\//g, "_") }}-item" data-curated="{{ curated }}">
+                  <label>
+                    <input type="checkbox" value="{{ subtopic['base_path'].replace(r/\//g, "_") }}" name="selected_topics"> <span class="topic-child-title">{{topic['title']}} - {{ subtopic['title'] }}</span>
+                  </label>
+                </div>
+                {% endfor %}
+            {% endfor %}
+
+          {#
             
-            {% for topic in topics.links.children %}
+            {% for topic in topics %}
               <a href="#{{ topic['base_path'].replace(r/\//g, "_") }}" class="list-group-item js-topic-parent" id="{{ topic['base_path'].replace(r/\//g, "_") }}_parent">
                 <span class="return-arrow glyphicon glyphicon-chevron-left add-right-margin"></span>
                 {{topic['title']}} <span class="text-muted">({{ topic['links']['children'].length }})</span><span class="forward-arrow glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
               </a>
             {% endfor %}
 
-            {% for topic in topics.links.children %}
+            {% for topic in topics %}
               <div class="list-group tag-explorer-topics-level-2 js-hidden js-topic-parent-group" id="{{ topic['base_path'].replace(r/\//g, "_") }}">
 
               {% for subtopic in topic['links']['children'] %}
@@ -66,6 +81,7 @@
                 {% endfor %}
               </div>
             {% endfor %}
+            #}
           </div>
         </div>
       </div>

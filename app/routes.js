@@ -47,7 +47,13 @@ router.get('/tagging', function(req,res){
   var ministers = require(__dirname+'/data/ministers');
   var policies = require(__dirname+'/data/policies').results;
   var policyAreas = require(__dirname+'/data/policy_areas').results;
-  var topics = require(__dirname+'/data/topics');
+  var topics = require(__dirname+'/data/topics').links.children;
+
+  topics.sort(function(a,b){
+
+    return (a.title >= b.title) ? 1 : -1;
+
+  });
 
   console.log(JSON.stringify(topics, null, '  '));
 

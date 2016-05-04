@@ -73,7 +73,11 @@
     }
 
     .matched-search label {
-      font-weight: bold;
+      // font-weight: bold;
+    }
+
+    .no-search-match{
+      display: none;
     }
 
     .no-search-match .topic-child-title {
