@@ -23,12 +23,11 @@
 
 <div class="tabbable">
   <div class="tab-content">
-    <form class="edition-form js-edition-form" id="new_edition" enctype="multipart/form-data" action="/tagging" accept-charset="UTF-8">
+    <form class="edition-form js-edition-form" id="new_edition" method="POST" action="/publication-review">
 
       <fieldset>
         {% include "includes/publication_type.html" %}
         
-
         {% include "includes/title.html" %}
 
         {% include "includes/summary.html" %}
@@ -82,7 +81,7 @@
 
       <div class="publishing-controls well">
         <div class="form-actions">
-          <a href="/publication-review" class="btn btn-primary btn-lg">Save</a>
+          <button class="btn btn-primary btn-lg">Save</button>
           <a href="#" class="btn btn-primary btn-lg">Save and continue</a>
 
           <span class="or_cancel"> or <a href="#">cancel</a></span>

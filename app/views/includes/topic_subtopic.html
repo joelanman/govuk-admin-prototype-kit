@@ -55,7 +55,7 @@
                 {% set curated = (subtopic['details']['groups'].length > 0) %}
                 <div class="js-topic-child list-group-item checkbox" id="{{ subtopic['base_path'].replace(r/\//g, "_") }}-item" data-curated="{{ curated }}">
                   <label>
-                    <input type="checkbox" value="{{ subtopic['base_path'].replace(r/\//g, "_") }}" name="selected_topics"> <span class="topic-child-title">{{topic['title']}} - {{ subtopic['title'] }}</span>
+                    <input type="checkbox" value="{{topic['title']}} - {{ subtopic['title'] }}" name="selected_topics"> <span class="topic-child-title">{{topic['title']}} - {{ subtopic['title'] }}</span>
                   </label>
                 </div>
                 {% endfor %}

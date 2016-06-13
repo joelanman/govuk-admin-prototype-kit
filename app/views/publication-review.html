@@ -17,8 +17,8 @@
 {% block main_column %}
 
 <div class="page-header">
-  <h1>Early years census 2016: technical specification</h1>
-  <p class="lead">Business and technical specification for local authorities and software suppliers to prepare for the early years census 2016.</p>
+  <h1>{{ edition_title }}</h1>
+  <p class="lead">{{ edition_summary }}</p>
 
   <dl class="clearfix dl-horizontal">
     <dt>Type of document:</dt>
@@ -30,7 +30,7 @@
     <dt>Organisations:</dt>
     <dd>Department for Education</dd>
     <dt>Topics:</dt>
-    <dd>None</dd>
+    <dd>{{ selected_topics }}</dd>
     <dt></dt>
     <dd><a href="/topics">Change topics</a></dd>
   </dl>

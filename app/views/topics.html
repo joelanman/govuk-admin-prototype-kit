@@ -20,13 +20,13 @@
 
 <div class="tabbable">
   <div class="tab-content">
-    <form class="edition-form js-edition-form" id="new_edition" enctype="multipart/form-data" action="/government/admin/detailed-guides" accept-charset="UTF-8" method="post">
+    <form class="edition-form js-edition-form" id="new_edition" method="POST" action="/publication-review" accept-charset="UTF-8" method="post">
 
       {{ drawTopicSubtopic(topics) }}
 
       <div class="publishing-controls well">
         <div class="form-actions">
-          <a href="/publication-review" class="btn btn-primary btn-lg">Publish topic changes</a>
+          <button class="btn btn-primary btn-lg">Publish topic changes</button>
 
           <span class="or_cancel">&nbsp;&nbsp;<a href="#">Cancel</a></span>
         </div>
