@@ -41,7 +41,27 @@ router.get('/examples/over-18', function (req, res) {
 
 // add your routes here
 
-router.get('/tagging', function(req,res){
+router.get('/admin', function(req,res){
+
+  var organisations = require(__dirname+'/data/organisations');
+  var ministers = require(__dirname+'/data/ministers');
+  var policies = require(__dirname+'/data/policies').results;
+  var policyAreas = require(__dirname+'/data/policy_areas').results;
+  var topics = require(__dirname+'/data/topics').links.children;
+
+  topics.sort(function(a,b){
+
+    return (a.title >= b.title) ? 1 : -1;
+
+  });
+
+  //console.log(JSON.stringify(topics, null, '  '));
+
+  res.render('admin',{organisations: organisations, ministers: ministers, topics: topics, policies: policies, policyAreas: policyAreas});
+
+});
+
+router.get('/topics', function(req,res){
 
   var organisations = require(__dirname+'/data/organisations');
   var ministers = require(__dirname+'/data/ministers');
@@ -57,7 +77,7 @@ router.get('/tagging', function(req,res){
 
   console.log(JSON.stringify(topics, null, '  '));
 
-  res.render('tagging',{organisations: organisations, ministers: ministers, topics: topics, policies: policies, policyAreas: policyAreas});
+  res.render('topics',{organisations: organisations, ministers: ministers, topics: topics, policies: policies, policyAreas: policyAreas});
 
 });
 

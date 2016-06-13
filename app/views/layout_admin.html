@@ -108,7 +108,9 @@
       </main>
       <footer class="page-footer">
         {% block footer_top %}{% endblock %}
+        {% block copyright %}
         <a class="inherit" href="http://www.nationalarchives.gov.uk/information-management/our-services/crown-copyright.htm">&copy; Crown Copyright</a>
+        {% endblock %}
       </footer>
     </section>
     {% block body_end %}{% endblock %}

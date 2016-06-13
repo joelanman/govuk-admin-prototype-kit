@@ -1,5 +1,11 @@
 {% extends "layout_two_column.html" %}
 
+{% from "includes/organisations.html" import organisations as drawOrganisations %}
+
+{% from "includes/ministers.html" import ministers as drawMinisters %}
+
+{% from "includes/topic_subtopic.html" import topic_subtopic as drawTopicSubtopic %}
+
 {% block head %}
   {% include "includes/head.html" %}
 {% endblock %}
@@ -57,18 +63,32 @@
 
       {% include "includes/excluded_nations.html" %}
 
+      <fieldset>
+        <legend>Specialist tagging</legend>
+        
+        <p>Specialist sectors are now called topics. You can add them once you've saved this document.</p>
+        <p>Changes to topics do not go through the review process.</p>
+      </fieldset>
+
       {% include "includes/access_limiting.html" %}
 
       {% include "includes/scheduled_publication.html" %}
 
+      {{ drawOrganisations(organisations) }}
+
+      {{ drawMinisters(ministers) }}
+
+      {% include "includes/policies.html" %}
+
       <div class="publishing-controls well">
         <div class="form-actions">
-          <a href="/tagging" class="btn btn-primary btn-lg">Tag document</a>
-          <a href="#" class="btn btn-primary btn-lg">Save</a>
+          <a href="/publication-review" class="btn btn-primary btn-lg">Save</a>
+          <a href="#" class="btn btn-primary btn-lg">Save and continue</a>
 
           <span class="or_cancel"> or <a href="#">cancel</a></span>
         </div>
       </div>
+
     </form>
   </div>
 </div>

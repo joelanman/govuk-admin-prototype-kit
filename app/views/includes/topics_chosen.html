@@ -9,15 +9,13 @@
       Topic is the new name for Specialist Sector.
     </p>
     <p class="lead">
-      Changes to topics are published when you save. They do not go through the review process.
-    </p>
-    <p class="lead">
       Adding a topic makes content appear on <a href="https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#specialist-tagging-topics">topic pages</a>.
     </p>
 
-    <!-- <div class="suggested-topics">
+    <div class="suggested-topics">
       <h4>Suggested</h4>
 
+      <!-- <p>Your organisation usually tags to:</p> -->
 
       <ul class="suggested-topics-list">
         <li>
@@ -36,7 +34,9 @@
           </label>
         </li>
       </ul>
-    </div> -->
+
+<!--       <p><a href="#" class="btn btn-default" id="suggested-topics-select">Select these topics</a> or choose more from below.</p> -->
+    </div>
 
     <div class="row">
       <div class="col-md-6" data-module="topic-search">
@@ -53,7 +53,7 @@
               {% for subtopic in topic['links']['children'] %}
 
                 {% set curated = (subtopic['details']['groups'].length > 0) %}
-                <div class="js-topic-child list-group-item checkbox" id="{{ subtopic['base_path'].replace(r/\//g, "_") }}-item" data-curated="{{ curated }}">
+                <div class="js-topic-child list-group-item no-search-match checkbox" id="{{ subtopic['base_path'].replace(r/\//g, "_") }}-item" data-curated="{{ curated }}">
                   <label>
                     <input type="checkbox" value="{{ subtopic['base_path'].replace(r/\//g, "_") }}" name="selected_topics"> <span class="topic-child-title">{{topic['title']}} - {{ subtopic['title'] }}</span>
                   </label>

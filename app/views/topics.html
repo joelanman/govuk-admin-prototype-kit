@@ -16,26 +16,19 @@
 
 {% block main_column %}
 
-<h1>Tag publication</h1>
+<h1>Early years census 2016: technical specification</h1>
 
 <div class="tabbable">
   <div class="tab-content">
     <form class="edition-form js-edition-form" id="new_edition" enctype="multipart/form-data" action="/government/admin/detailed-guides" accept-charset="UTF-8" method="post">
 
-      {{ drawOrganisations(organisations) }}
-
-      {{ drawMinisters(ministers) }}
-
-      {% include "includes/policies.html" %}
-
       {{ drawTopicSubtopic(topics) }}
 
       <div class="publishing-controls well">
         <div class="form-actions">
-          <a href="/publication/review" class="btn btn-primary btn-lg">Save</a>
-          <a href="#" class="btn btn-primary btn-lg">Save and continue</a>
+          <a href="/publication-review" class="btn btn-primary btn-lg">Publish topic changes</a>
 
-          <span class="or_cancel"> or <a href="#">cancel</a></span>
+          <span class="or_cancel">&nbsp;&nbsp;<a href="#">Cancel</a></span>
         </div>
       </div>
 
@@ -49,7 +42,6 @@
 
 {% block side_bar %}
 
-  {% include "includes/sidebar.html" %}
 
 {% endblock %}
 
