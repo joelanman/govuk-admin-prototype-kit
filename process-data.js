@@ -54,6 +54,10 @@ csv({noheader:true})
     // console.log()
 })
 .on('done',(error)=>{
-    fs.writeFileSync('./resources/taxonomy.json',JSON.stringify(taxonomy, null, '  '))
-    console.log('done')
+  if (taxonomy['Home']){
+    // remove treejack 'home' level
+    taxonomy = taxonomy['Home']
+  }
+  fs.writeFileSync('./resources/taxonomy.json',JSON.stringify(taxonomy, null, '  '))
+  console.log('done')
 })
