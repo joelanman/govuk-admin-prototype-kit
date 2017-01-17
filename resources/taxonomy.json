@@ -1,0 +1,183 @@
+{
+  "Home": {
+    "Education, training and skills": {
+      "School curriculum": {
+        "Early years curriculum": {},
+        "Primary curriculum, key stage 1": {
+          "Assessments (key stage 1)": {},
+          "English  (key stage 1)": {},
+          "Maths (key stage 1)": {},
+          "Phonics": {},
+          "Programmes of study  (key stage 1)": {},
+          "Science (key stage 1)": {},
+          "Tests (key stage 1)": {}
+        },
+        "Primary curriculum, key stage 2": {
+          "Assessments  (key stage 2)": {},
+          "English  (key stage 2)": {},
+          "Maths (key stage 2)": {},
+          "Programmes of study (key stage 2)": {},
+          "Science (key stage 2)": {},
+          "Tests (key stage 2)": {}
+        },
+        "Secondary curriculum, key stage 3 and key stage 4 (GCSEs)": {
+          "GCSE subject content and requirements": {},
+          "Key stage 3 and 4 exam marking, qualifications and results": {},
+          "GCSE changes and reforms": {}
+        },
+        "Key stage 5 (AS and A Levels)": {},
+        "Spiritual, moral, social and cultural development": {},
+        "Personal, social, health and economic education": {}
+      },
+      "Running and managing a school": {
+        "School admissions": {},
+        "Setting up or changing the status of a school": {},
+        "Funding and finance for schools and academies": {
+          "Procurement for schools": {},
+          "School insurance and risk management": {},
+          "Academy funding and compliance": {},
+          "Academy financial management and reporting": {},
+          "Maintained school and local authority funding": {},
+          "Pupil Premium": {},
+          "Schools forums": {},
+          "Funding for 16 to 19 year olds": {}
+        },
+        "Managing school data": {},
+        "School governance": {},
+        "School buildings and premises": {},
+        "Recruiting and managing school staff": {},
+        "School meals, transport and uniform": {},
+        "Careers guidance in schools": {},
+        "School complaints and whistleblowing": {}
+      },
+      "Pupil wellbeing, behaviour and attendance": {
+        "Health and safety in schools": {},
+        "Safeguarding pupils": {},
+        "School attendance and absence": {},
+        "School bullying": {},
+        "School discipline and exclusions": {}
+      },
+      "School inspections and performance": {
+        "Inspection of maintained schools and academies": {},
+        "Inspection of independent schools": {},
+        "inspection of boarding and residential schools": {},
+        "Inspection of British schools overseas": {},
+        "Ofsted inspection reports and ratings": {}
+      },
+      "Teaching and leadership": {
+        "Teaching standards, conduct and practice": {},
+        "Teacher records": {},
+        "Teacher pay, pensions and conditions": {},
+        "Teacher training and professional development": {
+          "School leadership": {},
+          "Initial Teacher Training (ITT)": {},
+          "Qualified Teacher Status (QTS)": {},
+          "Subject Knowledge Enhancement (SKE)": {},
+          "National Professional Qualification for Headship (NPQH)": {}
+        }
+      },
+      "Alternatives to school": {
+        "Home schooling": {},
+        "Alternative provision and pupil referral units": {}
+      },
+      "Further and higher education, skills and vocational training": {
+        "Apprenticeships, traineeships and internships": {
+          "Types of apprenticeships": {},
+          "Being an apprentice": {},
+          "Traineeships": {},
+          "Internships": {},
+          "Employers and training organisations": {}
+        },
+        "Careers guidance in further and higher education": {},
+        "Learning Records Service (LRS)": {},
+        "Further and higher education courses and qualifications": {},
+        "Inspection and performance of further education providers": {
+          "Inspection of further education and skills providers": {},
+          "Inspection of residential provision in further education colleges": {},
+          "Ofsted inspection reports and ratings": {}
+        },
+        "Running a further or higher education institution": {},
+        "Funding and finance for further or higher education providers": {},
+        "Adult and community learning": {},
+        "Education in prisons": {}
+      },
+      "Funding and finance for students": {
+        "Student loans and sponsorship": {},
+        "Financial help for students who are parents or carers": {},
+        "Financial help for international students in the UK": {}
+      },
+      "Pupils and students with special educational needs and disability (SEND)": {
+        "Special educational needs and disability (SEND) code of practice": {},
+        "Funding for special educational needs and disability (SEND)": {},
+        "Special educational needs and disability (SEND) support in schools": {}
+      },
+      "Education of disadvantaged children": {},
+      "Support for education work in other countries": {}
+    },
+    "Parenting, childcare and children's services": {
+      "Pregnancy and birth": {},
+      "Adoption, fostering and surrogacy": {
+        "Adoption": {
+          "Adopting a child": {},
+          "Adoption agencies": {},
+          "Intercountry adoption": {}
+        },
+        "Fostering": {
+          "Fostering a child": {},
+          "Fostering services": {}
+        },
+        "Surrogacy": {},
+        "Special guardianship": {}
+      },
+      "Looked-after children and children in care": {
+        "Child and family social workers": {},
+        "Children's homes and other accommodation": {},
+        "Children and young people leaving care": {},
+        "Children's social care providers": {
+          "Becoming a children's social care provider": {},
+          "Inspection of children's social care providers": {},
+          "Complaints": {}
+        },
+        "Refugee, runaway and homeless children": {}
+      },
+      "Childcare": {
+        "Finding and paying for childcare": {},
+        "Running a childcare business": {
+          "Childminding": {},
+          "Children's centres": {},
+          "Pre-schools and nurseries": {},
+          "Recruiting and managing early years staff": {},
+          "Funding and finance for childcare providers": {},
+          "Early years curriculum (0 to 5)": {},
+          "Performance and inspection of childcare providers": {},
+          "Training and professional development for childcare providers": {},
+          "Admissions and census data for childcare providers": {}
+        },
+        "Childcare for children with special needs, disabilities or disadvantages": {}
+      },
+      "Children's health and welfare": {
+        "Mental health of children and young people": {},
+        "Help for children with a long-term illness or disability": {},
+        "Children's rights": {},
+        "Child poverty": {},
+        "Young carers": {}
+      },
+      "Divorce, separation and legal issues": {},
+      "Financial help if you have children": {},
+      "Safeguarding and child protection": {
+        "Preventing neglect, abuse and exploitation": {},
+        "Child abduction and cross-border child protection": {},
+        "Online safety": {},
+        "Safeguarding inspection": {},
+        "Serious case reviews": {}
+      },
+      "Schooling and education choices": {
+        "Sending a child to school": {},
+        "Home schooling": {},
+        "Dealing with problems at school": {},
+        "Help with school costs": {},
+        "Financial help for post 16 education": {}
+      }
+    }
+  }
+}

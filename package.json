@@ -16,6 +16,7 @@
     "bootstrap-sass": "^3.3.6",
     "browser-sync": "^2.13.0",
     "consolidate": "0.x",
+    "csvtojson": "^1.1.2",
     "express": "4.13.3",
     "express-nunjucks": "^0.9.3",
     "express-session": "^1.13.0",
