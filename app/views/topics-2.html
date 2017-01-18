@@ -1,0 +1,258 @@
+{% extends "layout_two_column.html" %}
+
+{% from "includes/topic_subtopic.html" import topic_subtopic as drawTopicSubtopic %}
+
+{% block head %}
+  {% include "includes/head.html" %}
+{% endblock %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block main_column %}
+
+<h1>Early years census 2016: technical specification</h1>
+
+<div class="tabbable">
+  <div class="tab-content">
+    <form class="edition-form js-edition-form" id="new_edition" method="GET" action="/topics-2" accept-charset="UTF-8" method="post">
+
+
+  <fieldset>
+    <legend>
+      <h2>Topics (new taxonomy)</h2>
+    </legend>
+
+    <p class="lead add-top-margin add-bottom-margin">
+      Changes to topics are published when you save. They do not go through the review process.
+    </p>
+
+    <p class="lead">
+      Adding a topic makes content appear on <a href="https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#specialist-tagging-topics">topic pages</a>.
+    </p>
+
+    <!-- <div class="suggested-topics">
+      <h4>Suggested</h4>
+
+
+      <ul class="suggested-topics-list">
+        <li>
+          <label class="checkbox">
+            <input type="checkbox" value="#_topic_schools-colleges-childrens-services_curriculum-qualifications-item" id="_topic_schools-colleges-childrens-services_curriculum-qualifications-suggested" name="suggested_topics"> Curriculum and qualifications
+          </label>
+        </li>
+        <li>
+          <label class="checkbox">
+            <input type="checkbox" value="#_topic_schools-colleges-childrens-services_early-years-item" id="_topic_schools-colleges-childrens-services_early-years-suggested" name="suggested_topics"> Early years
+          </label>
+        </li>
+        <li>
+          <label class="checkbox">
+            <input type="checkbox" value="#_topic_schools-colleges-childrens-services_school-college-funding-finance-item" id="_topic_schools-colleges-childrens-services_school-college-funding-finance-suggested" name="suggested_topics"> School and college funding and finance
+          </label>
+        </li>
+      </ul>
+    </div> -->
+
+    <p class="content content-bordered" style="height: 1em;line-height: 6px;">
+      School curriculum &gt; Primary curriculum, key stage 1 &gt; <strong>Assessments (key stage 1)</strong>
+    </p>
+
+    <div class="publishing-controls well">
+      <div class="form-actions">
+        <button class="btn btn-primary btn-lg">Publish topic changes</button>
+
+        <span class="or_cancel">&nbsp;&nbsp;<a href="#">Cancel</a></span>
+      </div>
+    </div>
+
+    <div class="topic-tree">
+
+    {% for topic, children in topics %}
+
+      <p>
+        <label>
+          <input type="checkbox" name="topic" value="{{topic}}"> <span>{{topic}}</span>
+        </label>
+      </p>
+
+      <div class="topics">
+
+      {% for topic, children in children %}
+
+        <p>
+          <label>
+            <input type="checkbox" name="topic" value="{{topic}}"> <span>{{topic}}</span>
+          </label>
+        </p>
+
+        <div class="topics">
+
+        {% for topic, children in children %}
+
+          <p>
+            <label>
+              <input type="checkbox" name="topic" value="{{topic}}"> <span>{{topic}}</span>
+            </label>
+          </p>
+
+          <div class="topics">
+
+          {% for topic, children in children %}
+
+            <p>
+              <label>
+                <input type="checkbox" name="topic" value="{{topic}}"> <span>{{topic}}</span>
+              </label>
+            </p>
+
+          {% endfor %}
+
+          </div>
+
+        {% endfor %}
+
+        </div>
+
+      {% endfor %}
+
+      </div>
+
+    {% endfor %}
+
+    </div>
+
+{#
+
+    <div class="row">
+      <div class="col-md-6" data-module="topic-search">
+        <div class="panel panel-default tag-explorer" id="tag-explorer">
+          <div class="panel-heading">Topics</div>
+          <div class="panel-heading">
+            <input class="form-control js-topic-filter" id="topic-search" placeholder="Search for topics">
+          </div>
+
+          <div class="tag-container list-group tag-explorer-topics-level-1">
+
+          {% for topic in topics %}
+
+              {% for subtopic in topic['links']['children'] %}
+
+                {% set curated = (subtopic['details']['groups'].length > 0) %}
+                <div class="js-topic-child list-group-item checkbox" id="{{ subtopic['base_path'].replace(r/\//g, "_") }}-item" data-curated="{{ curated }}">
+                  <label>
+                    <input type="checkbox" value="{{topic['title']}} - {{ subtopic['title'] }}" name="selected_topics"> <span class="topic-child-title">{{topic['title']}} - {{ subtopic['title'] }}</span>
+                  </label>
+                </div>
+                {% endfor %}
+            {% endfor %}
+
+
+            {% for topic in topics %}
+              <a href="#{{ topic['base_path'].replace(r/\//g, "_") }}" class="list-group-item js-topic-parent" id="{{ topic['base_path'].replace(r/\//g, "_") }}_parent">
+                <span class="return-arrow glyphicon glyphicon-chevron-left add-right-margin"></span>
+                {{topic['title']}} <span class="text-muted">({{ topic['links']['children'].length }})</span><span class="forward-arrow glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              </a>
+            {% endfor %}
+
+            {% for topic in topics %}
+              <div class="list-group tag-explorer-topics-level-2 js-hidden js-topic-parent-group" id="{{ topic['base_path'].replace(r/\//g, "_") }}">
+
+              {% for subtopic in topic['links']['children'] %}
+
+                {% set curated = (subtopic['details']['groups'].length > 0) %}
+                <div class="js-topic-child list-group-item checkbox" id="{{ subtopic['base_path'].replace(r/\//g, "_") }}-item" data-curated="{{ curated }}">
+                  <label>
+                    <input type="checkbox" value="{{ subtopic['base_path'].replace(r/\//g, "_") }}" name="selected_topics"> <span class="topic-child-title">{{ subtopic['title'] }}</span>
+                  </label>
+                </div>
+                {% endfor %}
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="panel panel-default tag-explorer" id="selected-topics">
+          <div class="panel-heading">Selected topics</div>
+          <div class="tag-container list-group selected-topics"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-topics">
+      <h3>Preview topics</h3>
+
+      <p>Preview how your document will appear on the topic pages you've tagged to:</p>
+
+      <ul class="preview-topics-list">
+
+      </ul>
+    </div>
+
+    <div class="curated-topics notice bg-info">
+      <p>The following topics are curated:</p>
+
+      <ul class="curated-topics-list comma-separated-list">
+
+      </ul>
+
+      <p id="topic-curated-warning">Read the guidance on how to <a href="https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#a-to-z-topic-pages-and-two-column-topic-pages">get content added to curated topics</a>.</p>
+    </div>
+
+<!--     <div class="panel panel-default" id="no-topics">
+      <div class="panel-heading">
+        <label for="no-topics-check" data-target="js-show-no-topics-desc" class="show-hide">
+          <input type="checkbox" name="no-topics-check" id="no-topics-check" value="true"> There are no suitable topics for this document</label>
+      </div>
+
+      <div class="js-show-no-topics-desc show-no-topics-desc js-hidden panel-body" id="js-show-no-topics-desc">
+        <div class="form-group">
+          <label for="no-topics-desc">Suggest a more relevant topic</label>
+          <input type="text" name="no-topics-desc" class="form-control" />
+        </div>
+      </div>
+    </div> -->
+    #}
+
+  </fieldset>
+
+  <script>
+    $('body').on('click', 'input:checkbox', function(){
+      var checked = $(this).is(":checked")
+      if (checked){
+        var $parents = $(this).parents('.topics,.topic-tree')
+        $parents.each(function(){
+          $(this).prev('p').find('input[type="checkbox"]').prop('checked', true)
+        })
+      } else {
+        $(this).closest('p').next('.topics').find('input[type="checkbox"]').prop('checked', false)
+      }
+    })
+  </script>
+
+
+
+      <div class="publishing-controls well">
+        <div class="form-actions">
+          <button class="btn btn-primary btn-lg">Publish topic changes</button>
+
+          <span class="or_cancel">&nbsp;&nbsp;<a href="#">Cancel</a></span>
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
+
+{% block side_bar %}
+
+
+{% endblock %}
