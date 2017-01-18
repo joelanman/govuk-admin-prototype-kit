@@ -36,18 +36,18 @@
       </ul>
     </div> -->
 
-    <p class="no-content no-content-bordered">
+    <p class="no-content no-content-bordered" style="height: 1em;line-height: 6px;">
       No topics
     </p>
 
 
-          <div class="publishing-controls well">
-            <div class="form-actions">
-              <button class="btn btn-primary btn-lg">Publish topic changes</button>
+    <div class="publishing-controls well">
+      <div class="form-actions">
+        <button class="btn btn-primary btn-lg">Publish topic changes</button>
 
-              <span class="or_cancel">&nbsp;&nbsp;<a href="#">Cancel</a></span>
-            </div>
-          </div>
+        <span class="or_cancel">&nbsp;&nbsp;<a href="#">Cancel</a></span>
+      </div>
+    </div>
 
     <div class="topic-tree">
 
@@ -201,5 +201,19 @@
     #}
 
   </fieldset>
+
+  <script>
+    $('body').on('click', 'input:checkbox', function(){
+      var checked = $(this).is(":checked")
+      if (checked){
+        var $parents = $(this).parents('.topics,.topic-tree')
+        $parents.each(function(){
+          $(this).prev('p').find('input[type="checkbox"]').prop('checked', true)
+        })
+      } else {
+        $(this).closest('p').next('.topics').find('input[type="checkbox"]').prop('checked', false)
+      }
+    })
+  </script>
 
 {% endmacro %}

@@ -63,19 +63,17 @@ router.get('/admin', function(req,res){
 
 router.get('/topics', function(req,res){
 
-  // var topics = require(__dirname+'/data/topics').links.children;
-  //
-  // topics.sort(function(a,b){
-  //
-  //   return (a.title >= b.title) ? 1 : -1;
-  //
-  // });
-  //
-  // console.log(JSON.stringify(topics, null, '  '));
-
   var topics = require('../resources/taxonomy.json')['Education, training and skills']
 
   res.render('topics',{topics: topics});
+
+});
+
+router.get('/topics-2', function(req,res){
+
+  var topics = require('../resources/taxonomy.json')['Education, training and skills']
+
+  res.render('topics-2',{topics: topics});
 
 });
 
