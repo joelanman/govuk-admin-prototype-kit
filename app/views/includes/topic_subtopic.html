@@ -2,15 +2,13 @@
 
   <fieldset>
     <legend>
-      <h2>Topics</h2>
+      <h2>Topics (new taxonomy)</h2>
     </legend>
 
     <p class="lead add-top-margin add-bottom-margin">
-      Topic is the new name for Specialist Sector.
-    </p>
-    <p class="lead">
       Changes to topics are published when you save. They do not go through the review process.
     </p>
+
     <p class="lead">
       Adding a topic makes content appear on <a href="https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#specialist-tagging-topics">topic pages</a>.
     </p>
@@ -38,6 +36,66 @@
       </ul>
     </div> -->
 
+    <p class="no-content no-content-bordered">
+      No topics
+    </p>
+
+    <div class="topic-tree">
+
+    {% for topic, children in topics %}
+
+      <p>
+        <label>
+          <input type="checkbox"> {{topic}}
+        </label>
+      </p>
+
+      <div class="topics">
+
+      {% for topic, children in children %}
+
+        <p>
+          <label>
+            <input type="checkbox"> {{topic}}
+          </label>
+        </p>
+
+        <div class="topics">
+
+        {% for topic, children in children %}
+
+          <p>
+            <label>
+              <input type="checkbox"> {{topic}}
+            </label>
+          </p>
+
+          <div class="topics">
+
+          {% for topic, children in children %}
+
+            <p>
+              <label>
+                <input type="checkbox"> {{topic}}
+              </label>
+            </p>
+
+          {% endfor %}
+
+          </div>
+
+        {% endfor %}
+
+        </div>
+
+      {% endfor %}
+
+      </div>
+
+    {% endfor %}
+
+    </div>
+
     <div class="row">
       <div class="col-md-6" data-module="topic-search">
         <div class="panel panel-default tag-explorer" id="tag-explorer">
@@ -47,7 +105,7 @@
           </div>
 
           <div class="tag-container list-group tag-explorer-topics-level-1">
-
+          {#
           {% for topic in topics %}
 
               {% for subtopic in topic['links']['children'] %}
@@ -61,8 +119,7 @@
                 {% endfor %}
             {% endfor %}
 
-          {#
-            
+
             {% for topic in topics %}
               <a href="#{{ topic['base_path'].replace(r/\//g, "_") }}" class="list-group-item js-topic-parent" id="{{ topic['base_path'].replace(r/\//g, "_") }}_parent">
                 <span class="return-arrow glyphicon glyphicon-chevron-left add-right-margin"></span>

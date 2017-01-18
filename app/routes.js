@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/', function (req, res) {
-  
+
   res.render('index');
 
 });
@@ -63,21 +63,19 @@ router.get('/admin', function(req,res){
 
 router.get('/topics', function(req,res){
 
-  var organisations = require(__dirname+'/data/organisations');
-  var ministers = require(__dirname+'/data/ministers');
-  var policies = require(__dirname+'/data/policies').results;
-  var policyAreas = require(__dirname+'/data/policy_areas').results;
-  var topics = require(__dirname+'/data/topics').links.children;
+  // var topics = require(__dirname+'/data/topics').links.children;
+  //
+  // topics.sort(function(a,b){
+  //
+  //   return (a.title >= b.title) ? 1 : -1;
+  //
+  // });
+  //
+  // console.log(JSON.stringify(topics, null, '  '));
 
-  topics.sort(function(a,b){
+  var topics = require('../resources/taxonomy.json')['Education, training and skills']
 
-    return (a.title >= b.title) ? 1 : -1;
-
-  });
-
-  console.log(JSON.stringify(topics, null, '  '));
-
-  res.render('topics',{organisations: organisations, ministers: ministers, topics: topics, policies: policies, policyAreas: policyAreas});
+  res.render('topics',{topics: topics});
 
 });
 
