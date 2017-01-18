@@ -69,8 +69,14 @@
     input[type="checkbox"]{
       margin-right: 10px;
     }
+
+    input[type="checkbox"]:checked + span{
+      font-weight: bold;
+    }
   }
 }
 .topics{
-  padding-left: 40px;
+  padding-left: 36px;
+  border-left: 1px solid #aaa;
+  margin-left: 6px;
 }
