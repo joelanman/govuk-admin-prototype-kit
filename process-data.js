@@ -58,6 +58,17 @@ csv({noheader:true})
     // remove treejack 'home' level
     taxonomy = taxonomy['Home']
   }
+
+  function sortHash(old){
+    var newo = {}
+    Object.keys(old).sort().forEach(function(k){
+      newo[k]=sortHash(old[k])
+    })
+    return newo
+  }
+
+  taxonomy = sortHash(taxonomy)
+
   fs.writeFileSync('./resources/taxonomy.json',JSON.stringify(taxonomy, null, '  '))
   console.log('done')
 })
