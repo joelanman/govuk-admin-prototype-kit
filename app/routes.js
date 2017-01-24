@@ -65,7 +65,8 @@ router.get('/topics', function(req,res){
 
   var topics = require('../resources/taxonomy.json')['Education, training and skills']
 
-  res.render('topics',{topics: topics});
+  var checked = function checked(topic){}
+  res.render('topics',{topics: topics, checked: checked});
 
 });
 
@@ -107,13 +108,16 @@ router.get('/topics-2', function(req,res){
 
   console.dir(levels)
 
-  for (var j = levels.length-1; j--; j>=0){
+  for (var j = levels.length-1; j>=0; j--){
+    console.log(j)
     if (!levels[j]){
       continue
     }
     for (var k=0; k < levels[j].length; k++){
       var found = false
       for (var l=0; l < displaySelected.length; l++){
+        console.log("levels[j][k]")
+        console.log(levels[j][k])
         if (displaySelected[l].indexOf(levels[j][k]) === 0){
           found = true
           break
@@ -124,6 +128,8 @@ router.get('/topics-2', function(req,res){
       }
     }
   }
+
+  console.dir(displaySelected)
 
   for (var m=0; m<displaySelected.length; m++){
     topicPath = displaySelected[m].split("|")
