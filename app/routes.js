@@ -63,16 +63,7 @@ router.get('/admin', function(req,res){
 
 router.get('/topics', function(req,res){
 
-  var topics = require('../resources/taxonomy.json')['Education, training and skills']
-
-  var checked = function checked(topic){}
-  res.render('topics',{topics: topics, checked: checked});
-
-});
-
-router.get('/topics-2', function(req,res){
-
-  var selected = req.query.topic
+  var selected = req.query.topic || []
 
   //console.log(selected)
 
@@ -139,7 +130,46 @@ router.get('/topics-2', function(req,res){
 
   console.dir(displaySelected)
 
-  res.render('topics-2',{topics: topics, checked: checked, displaySelected: displaySelected});
+  if (displaySelected.length == 0){
+    displaySelected.push("No topics selected")
+  }
+
+  res.render('topics',{topics: topics, checked: checked, displaySelected: displaySelected});
+
+});
+
+
+router.get('/topics-2', function(req,res){
+
+  var selected = req.query.topic || []
+
+  //console.log(selected)
+
+  var topics = require('../resources/taxonomy.json')['Education, training and skills']
+
+  var flatTopics = {}
+
+  function populateFlatTopics(topics){
+    for (var topic in topics){
+      var newTopic = {
+        "name": topic,
+        "children": []
+      }
+      for (var child in topics[topic]){
+        newTopic.children.push(child)
+      }
+      flatTopics[topic] = newTopic
+      if (Object.keys(topics[topic]).length !== 0){
+          populateFlatTopics(topics[topic])
+      }
+    }
+  }
+
+  populateFlatTopics(topics)
+
+  console.dir(flatTopics)
+
+  res.render('topics-2',{topics: flatTopics})
 
 });
 

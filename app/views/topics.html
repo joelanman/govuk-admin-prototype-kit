@@ -16,7 +16,7 @@
 
 <div class="tabbable">
   <div class="tab-content">
-    <form class="edition-form js-edition-form" id="new_edition" method="GET" action="/topics-2" accept-charset="UTF-8" method="post">
+    <form class="edition-form js-edition-form" id="new_edition" method="GET" action="/topics" accept-charset="UTF-8" method="post">
 
 
   <fieldset>
@@ -55,10 +55,13 @@
       </ul>
     </div> -->
 
-    <p class="no-content no-content-bordered" style="height: 1em;line-height: 6px;">
-      No topics
-    </p>
+    <div class="content content-bordered" >
+      {% for topic in displaySelected %}
 
+        <p>{{topic|safe}}</p>
+
+      {% endfor %}
+    </div>
 
     <div class="publishing-controls well">
       <div class="form-actions">
@@ -68,56 +71,52 @@
       </div>
     </div>
 
-      <div class="topic-tree">
+    <div class="topic-tree">
 
 
-          <p style="font-size: 16px;">
-            <strong>
-              Education, training and skills
-            </strong>
-          </p>
+        <p style="font-size: 16px;">
+          <strong>
+            Education, training and skills
+          </strong>
+        </p>
 
-      {% for topic1, children in topics %}
+    {% for topic1, children in topics %}
+
+      <p>
+        <label>
+          <input type="checkbox" name="topic" {{checked(topic1)}} value="{{topic1}}"> <span>{{topic1}}</span>
+        </label>
+      </p>
+
+      <div class="topics">
+
+      {% for topic2, children in children %}
 
         <p>
           <label>
-            <input type="checkbox" name="topic" {{checked(topic1)}} value="{{topic1}}"> <span>{{topic1}}</span>
+            <input type="checkbox" name="topic" {{checked(topic1+"|"+topic2)}} value="{{topic1}}|{{topic2}}"> <span>{{topic2}}</span>
           </label>
         </p>
 
         <div class="topics">
 
-        {% for topic2, children in children %}
+        {% for topic3, children in children %}
 
           <p>
             <label>
-              <input type="checkbox" name="topic" {{checked(topic1+"|"+topic2)}} value="{{topic1}}|{{topic2}}"> <span>{{topic2}}</span>
+              <input type="checkbox" name="topic" {{checked(topic1+"|"+topic2+"|"+topic3)}} value="{{topic1}}|{{topic2}}|{{topic3}}"> <span>{{topic3}}</span>
             </label>
           </p>
 
           <div class="topics">
 
-          {% for topic3, children in children %}
+          {% for topic4, children in children %}
 
             <p>
               <label>
-                <input type="checkbox" name="topic" {{checked(topic1+"|"+topic2+"|"+topic3)}} value="{{topic1}}|{{topic2}}|{{topic3}}"> <span>{{topic3}}</span>
+                <input type="checkbox" name="topic" {{checked(topic1+"|"+topic2+"|"+topic3+"|"+topic4)}} value="{{topic1}}|{{topic2}}|{{topic3}}{{topic4}}"> <span>{{topic4}}</span>
               </label>
             </p>
-
-            <div class="topics">
-
-            {% for topic4, children in children %}
-
-              <p>
-                <label>
-                  <input type="checkbox" name="topic" {{checked(topic1+"|"+topic2+"|"+topic3+"|"+topic4)}} value="{{topic1}}|{{topic2}}|{{topic3}}{{topic4}}"> <span>{{topic4}}</span>
-                </label>
-              </p>
-
-            {% endfor %}
-
-            </div>
 
           {% endfor %}
 
@@ -130,6 +129,10 @@
       {% endfor %}
 
       </div>
+
+    {% endfor %}
+
+    </div>
 
 {#
 
