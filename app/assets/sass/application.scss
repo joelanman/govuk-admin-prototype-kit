@@ -130,7 +130,8 @@
     text-decoration: none;
   }
   &.selected{
-    background: #ddd;
+    background: #333;
+    color: #fff;
   }
 }
 
@@ -155,4 +156,8 @@
     content: "\2039";
     font-size: 24px;
   }
+}
+
+.footer-spacer{
+  height: 500px;
 }
