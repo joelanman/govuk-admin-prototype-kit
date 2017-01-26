@@ -71,141 +71,61 @@
       </div>
     </div>
 
-    <div class="topic-tree">
+    <div class="topic-columns" id="topic-columns">
+      <div class="col col-a">
+        <div class="inner"></div>
+      </div>
+      <div class="col col-b">
+        <header class="col-b-header">
+          <p class="selected-topic" id="selected-topic"></p>
+          <button class="btn btn-primary btn-g">Use this topic</button>
+        </header>
+        <div class="inner"></div>
+      </div>
+    </div>
 
+    <div class="topic-lists hidden">
 
-        <p style="font-size: 16px;">
-          <strong>
-            Education, training and skills
-          </strong>
-        </p>
+      {% for name, topic in topics %}
 
-    {% for topic in topics %}
+        <div class="topic-list" id="{{toSlug(topic.name)}}">
 
-      <h2>{{topic.name}}</h2>
+          {% for subTopic in topic.children %}
 
-      {% for subTopic in topic.children %}
+            <a href="#{{toSlug(subTopic)}}">{{subTopic}}</a>
 
-        <p><a href="#">{{subTopic}}</a></p>
+          {% endfor %}
+
+        </div>
 
       {% endfor %}
 
-    {% endfor %}
-
     </div>
-
-{#
-
-    <div class="row">
-      <div class="col-md-6" data-module="topic-search">
-        <div class="panel panel-default tag-explorer" id="tag-explorer">
-          <div class="panel-heading">Topics</div>
-          <div class="panel-heading">
-            <input class="form-control js-topic-filter" id="topic-search" placeholder="Search for topics">
-          </div>
-
-          <div class="tag-container list-group tag-explorer-topics-level-1">
-
-          {% for topic in topics %}
-
-              {% for subtopic in topic['links']['children'] %}
-
-                {% set curated = (subtopic['details']['groups'].length > 0) %}
-                <div class="js-topic-child list-group-item checkbox" id="{{ subtopic['base_path'].replace(r/\//g, "_") }}-item" data-curated="{{ curated }}">
-                  <label>
-                    <input type="checkbox" value="{{topic['title']}} - {{ subtopic['title'] }}" name="selected_topics"> <span class="topic-child-title">{{topic['title']}} - {{ subtopic['title'] }}</span>
-                  </label>
-                </div>
-                {% endfor %}
-            {% endfor %}
-
-
-            {% for topic in topics %}
-              <a href="#{{ topic['base_path'].replace(r/\//g, "_") }}" class="list-group-item js-topic-parent" id="{{ topic['base_path'].replace(r/\//g, "_") }}_parent">
-                <span class="return-arrow glyphicon glyphicon-chevron-left add-right-margin"></span>
-                {{topic['title']}} <span class="text-muted">({{ topic['links']['children'].length }})</span><span class="forward-arrow glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              </a>
-            {% endfor %}
-
-            {% for topic in topics %}
-              <div class="list-group tag-explorer-topics-level-2 js-hidden js-topic-parent-group" id="{{ topic['base_path'].replace(r/\//g, "_") }}">
-
-              {% for subtopic in topic['links']['children'] %}
-
-                {% set curated = (subtopic['details']['groups'].length > 0) %}
-                <div class="js-topic-child list-group-item checkbox" id="{{ subtopic['base_path'].replace(r/\//g, "_") }}-item" data-curated="{{ curated }}">
-                  <label>
-                    <input type="checkbox" value="{{ subtopic['base_path'].replace(r/\//g, "_") }}" name="selected_topics"> <span class="topic-child-title">{{ subtopic['title'] }}</span>
-                  </label>
-                </div>
-                {% endfor %}
-              </div>
-            {% endfor %}
-
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="panel panel-default tag-explorer" id="selected-topics">
-          <div class="panel-heading">Selected topics</div>
-          <div class="tag-container list-group selected-topics"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="preview-topics">
-      <h3>Preview topics</h3>
-
-      <p>Preview how your document will appear on the topic pages you've tagged to:</p>
-
-      <ul class="preview-topics-list">
-
-      </ul>
-    </div>
-
-    <div class="curated-topics notice bg-info">
-      <p>The following topics are curated:</p>
-
-      <ul class="curated-topics-list comma-separated-list">
-
-      </ul>
-
-      <p id="topic-curated-warning">Read the guidance on how to <a href="https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#a-to-z-topic-pages-and-two-column-topic-pages">get content added to curated topics</a>.</p>
-    </div>
-
-<!--     <div class="panel panel-default" id="no-topics">
-      <div class="panel-heading">
-        <label for="no-topics-check" data-target="js-show-no-topics-desc" class="show-hide">
-          <input type="checkbox" name="no-topics-check" id="no-topics-check" value="true"> There are no suitable topics for this document</label>
-      </div>
-
-      <div class="js-show-no-topics-desc show-no-topics-desc js-hidden panel-body" id="js-show-no-topics-desc">
-        <div class="form-group">
-          <label for="no-topics-desc">Suggest a more relevant topic</label>
-          <input type="text" name="no-topics-desc" class="form-control" />
-        </div>
-      </div>
-    </div> -->
-    #}
 
   </fieldset>
 
   <script>
-    $('body').on('click', 'input:checkbox', function(){
-      var checked = $(this).is(":checked")
-      if (checked){
-        var $parents = $(this).parents('.topics,.topic-tree')
-        $parents.each(function(){
-          $(this).prev('p').find('input[type="checkbox"]').prop('checked', true)
-        })
-      } else {
-        $(this).closest('p').next('.topics').find('input[type="checkbox"]').prop('checked', false)
-      }
+
+    $('#root').appendTo($('#topic-columns .col-a .inner'))
+
+    $('#topic-columns').on('click', '.col-a a', function(e){
+      e.preventDefault()
+      var target = $(this).attr('href')
+      $('#topic-columns .col-b .inner').empty()
+      $(target).appendTo($('#topic-columns .col-b .inner'))
+      $('#selected-topic').text($(this).text())
     })
+
+    $('#topic-columns').on('click', '.col-b a', function(e){
+      e.preventDefault()
+      var target = $(this).attr('href')
+      $('#topic-columns .col-a .inner').html($('#topic-columns .col-b .inner').html())
+      $('#topic-columns .col-b .inner').empty()
+      $(target).appendTo($('#topic-columns .col-b .inner'))
+      $('#selected-topic').text($(this).text())
+    })
+
   </script>
-
-
 
       <div class="publishing-controls well">
         <div class="form-actions">

@@ -149,27 +149,30 @@ router.get('/topics-2', function(req,res){
 
   var flatTopics = {}
 
-  function populateFlatTopics(topics){
-    for (var topic in topics){
-      var newTopic = {
-        "name": topic,
-        "children": []
-      }
-      for (var child in topics[topic]){
-        newTopic.children.push(child)
-      }
-      flatTopics[topic] = newTopic
-      if (Object.keys(topics[topic]).length !== 0){
-          populateFlatTopics(topics[topic])
+  function populateFlatTopics(name, children){
+    var newTopic = {
+      "name": name,
+      "children": []
+    }
+    for (var child in children){
+      newTopic.children.push(child)
+
+      if (Object.keys(children[child]).length !== 0){
+          populateFlatTopics(child, children[child])
       }
     }
+    flatTopics[name] = newTopic
   }
 
-  populateFlatTopics(topics)
+  populateFlatTopics("root", topics)
 
   console.dir(flatTopics)
 
-  res.render('topics-2',{topics: flatTopics})
+  var toSlug = function toSlug (input) {
+    return input.replace(/[^\w\s]/g, "").replace(/\s/g, "-")
+  }
+
+  res.render('topics-2',{topics: flatTopics, toSlug: toSlug})
 
 });
 
