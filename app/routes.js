@@ -149,16 +149,17 @@ router.get('/topics-2', function(req,res){
 
   var flatTopics = {}
 
-  function populateFlatTopics(name, children){
+  function populateFlatTopics(name, children, parent){
     var newTopic = {
       "name": name,
-      "children": []
+      "children": [],
+      "parent": parent || ""
     }
     for (var child in children){
       newTopic.children.push(child)
 
       if (Object.keys(children[child]).length !== 0){
-          populateFlatTopics(child, children[child])
+          populateFlatTopics(child, children[child], name)
       }
     }
     flatTopics[name] = newTopic

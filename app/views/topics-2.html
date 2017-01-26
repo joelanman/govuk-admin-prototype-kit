@@ -73,22 +73,29 @@
 
     <div class="topic-columns" id="topic-columns">
       <div class="col col-a">
-        <div class="inner"></div>
+        <div class="inner">
+          <header class="col-a-header">
+            <a href="#" class="back" id="#topic-back">Back</a>
+          </header>
+          <div class="list-holder"></div>
+        </div>
       </div>
       <div class="col col-b">
-        <header class="col-b-header">
-          <p class="selected-topic" id="selected-topic"></p>
-          <button class="btn btn-primary btn-g">Use this topic</button>
-        </header>
-        <div class="inner"></div>
+        <div class="inner">
+          <header class="col-b-header">
+            <p class="selected-topic" id="selected-topic"></p>
+            <button class="btn btn-primary btn-g">Use this topic</button>
+          </header>
+          <div class="list-holder"></div>
+        </div>
       </div>
     </div>
 
-    <div class="topic-lists hidden">
+    <div class="topic-lists hidden" id="topic-lists">
 
       {% for name, topic in topics %}
 
-        <div class="topic-list" id="{{toSlug(topic.name)}}">
+        <div class="topic-list" id="{{toSlug(topic.name)}}" data-parent="{{topic.parent}}" data-parent-slug="{{toSlug(topic.parent)}}">
 
           {% for subTopic in topic.children %}
 
@@ -106,22 +113,55 @@
 
   <script>
 
-    $('#root').appendTo($('#topic-columns .col-a .inner'))
+    $('#root').appendTo($('#topic-columns .col-a .list-holder'))
 
-    $('#topic-columns').on('click', '.col-a a', function(e){
+    $('#topic-columns').on('click', '.col-a .list-holder a', function(e){
       e.preventDefault()
+      $('#topic-columns .col-b-header').show()
+      //remove .selected from other and apply to this
+      $(this).closest('.topic-list').find('.selected').removeClass('selected')
+      $(this).addClass('selected')
+      // put col b in topic-lists (hidden)
+      $('#topic-lists').append($('#topic-columns .col-b .list-holder').contents())
+      // get target and put in col b
       var target = $(this).attr('href')
-      $('#topic-columns .col-b .inner').empty()
-      $(target).appendTo($('#topic-columns .col-b .inner'))
+      $(target).appendTo($('#topic-columns .col-b .list-holder'))
       $('#selected-topic').text($(this).text())
     })
 
-    $('#topic-columns').on('click', '.col-b a', function(e){
+    $('#topic-columns').on('click', '.back', function(e){
       e.preventDefault()
+      var parentId = '#' + $(this).closest('.col').find('.topic-list').data('parent-slug')
+      console.log(parentId)
+      // put col b in topic-lists (hidden)
+      $('#topic-lists').append($('#topic-columns .col-b .list-holder').contents())
+      // put col a in col b
+      $('#topic-columns .col-b .list-holder').append($('#topic-columns .col-a .list-holder').contents())
+      // put parent in col a
+      $(parentId).appendTo($('#topic-columns .col-a .list-holder'))
+      // put selected in col a into selected topic
+      $('#selected-topic').text($('#topic-columns .col-a .list-holder .selected').text())
+      // remove selected from col b
+      $('#topic-columns .col-b .list-holder .selected').removeClass('selected')
+      // if this is root, hide back
+      if (parentId == '#root'){
+        $('#topic-columns .col-a-header').hide()
+      }
+    })
+
+    $('#topic-columns').on('click', '.col-b .list-holder a', function(e){
+      e.preventDefault()
+      $('#topic-columns .col-a-header').show()
+      //remove .selected from other and apply to this
+      $(this).closest('.topic-list').find('.selected').removeClass('selected')
+      $(this).addClass('selected')
+      // put col a in topic-lists (hidden)
+      $('#topic-lists').append($('#topic-columns .col-a .list-holder').contents())
+      // put col b in col a
+      $('#topic-columns .col-a .list-holder').append($('#topic-columns .col-b .list-holder').contents())
+      // put target in col b
       var target = $(this).attr('href')
-      $('#topic-columns .col-a .inner').html($('#topic-columns .col-b .inner').html())
-      $('#topic-columns .col-b .inner').empty()
-      $(target).appendTo($('#topic-columns .col-b .inner'))
+      $(target).appendTo($('#topic-columns .col-b .list-holder'))
       $('#selected-topic').text($(this).text())
     })
 

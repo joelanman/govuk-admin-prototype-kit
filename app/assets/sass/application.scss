@@ -101,11 +101,14 @@
     border-right: 1px solid #ccc;
     padding-right: 10px;
   }
-
+  .col-a-header{
+    display: none;
+  }
   .col-b .inner{
     padding-left: 10px;
   }
   .col-b-header{
+    display: none;
     padding: 20px;
   }
   .selected-topic{
@@ -114,8 +117,7 @@
   }
 }
 
-.topic-list{
-  a{
+.topic-list a, .back{
     font-size: 16px;
     display: block;
     padding: 1em;
@@ -123,8 +125,10 @@
     border-top: 1px solid #999;
     margin-bottom: -1px;
     margin-top: 0;
-  }
-  a:hover{
+  &:hover{
     text-decoration: none;
+  }
+  &.selected{
+    background: #ddd;
   }
 }
