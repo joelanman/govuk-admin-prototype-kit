@@ -118,9 +118,10 @@
 }
 
 .topic-list a, .back{
+    position: relative;
     font-size: 16px;
     display: block;
-    padding: 16px;
+    padding: 16px 26px 16px 16px;
     border-bottom: 1px solid #999;
     border-top: 1px solid #999;
     margin-bottom: -1px;
@@ -130,5 +131,28 @@
   }
   &.selected{
     background: #ddd;
+  }
+}
+
+.topic-list a:after {
+  position: absolute;
+  top: 50%;
+  margin-top: -18px;
+  right: 10px;
+  float: right;
+  content: "\203A";
+  font-size: 24px;
+}
+
+.back{
+  padding-left: 26px;
+  &:after {
+    position: absolute;
+    top: 50%;
+    margin-top: -18px;
+    left: 10px;
+    float: right;
+    content: "\2039";
+    font-size: 24px;
   }
 }
