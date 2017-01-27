@@ -139,7 +139,7 @@ router.get('/topics', function(req,res){
 });
 
 
-router.get('/topics-2', function(req,res){
+router.get('/topics-2-add', function(req,res){
 
   var selected = req.query.topic || []
 
@@ -173,7 +173,7 @@ router.get('/topics-2', function(req,res){
     return input.replace(/[^\w\s]/g, "").replace(/\s/g, "-")
   }
 
-  res.render('topics-2',{topics: flatTopics, toSlug: toSlug})
+  res.render('topics-2-add',{topics: flatTopics, toSlug: toSlug})
 
 });
 
