@@ -183,7 +183,8 @@ utils.findAvailablePort(app, function(port) {
         ghostmode:false,
         open:false,
         notify:false,
-        logLevel: "error"
+        logLevel: "error",
+        scrollRestoreTechnique: "cookie"
       });
     });
   }

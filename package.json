@@ -14,7 +14,7 @@
     "basic-auth-connect": "^1.0.0",
     "body-parser": "^1.14.1",
     "bootstrap-sass": "^3.3.6",
-    "browser-sync": "^2.13.0",
+    "browser-sync": "^2.18.6",
     "consolidate": "0.x",
     "csvtojson": "^1.1.2",
     "express": "4.13.3",
