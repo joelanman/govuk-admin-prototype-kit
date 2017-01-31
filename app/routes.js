@@ -65,6 +65,9 @@ router.get('/topics', function(req,res){
 
   var selected = req.query.topic || []
 
+  // ensure it's an array
+  selected = [].concat(selected)
+  
   //console.log(selected)
 
   var topics = require('../resources/taxonomy.json')['Education, training and skills']
