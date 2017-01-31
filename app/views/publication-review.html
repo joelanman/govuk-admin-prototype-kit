@@ -29,10 +29,6 @@
     <dd>Major</dd>
     <dt>Organisations:</dt>
     <dd>Department for Education</dd>
-    <dt>Topics:</dt>
-    <dd>{{ selected_topics }}</dd>
-    <dt></dt>
-    <dd><a href="/topics">Change topics</a></dd>
   </dl>
 </div>
 
@@ -42,6 +38,37 @@
   <a title="Edit Test" class="btn btn-default btn-lg add-left-margin" href="/publication">Edit draft</a>
 
 </section>
+
+<section class="translations" id="translations">
+  <h2>
+    Topics (new taxonomy)
+    <a href="/topics" id="open-add-translation-modal" class="btn btn-default pull-right" data-toggle="modal"><i class="glyphicon glyphicon-plus-sign"></i> Add topic</a>
+  </h2>
+  <div id="add-translation-modal" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h3 class="modal-title">Add translation</h3>
+        </div>
+        <form action="/government/admin/editions/563413/translations" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ipnt7/6yrrcE7cHF2Cq02fhC0RVMZz35OQbF9hjDBPhM+mS2O/KsrwxRHWDpIPIz9I1Ch3NivIPmwG9JOefqwQ==">
+          <div class="modal-body">
+
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-default add-right-margin" data-dismiss="modal" aria-hidden="true">Cancel</button>
+            <input type="submit" name="commit" value="Add translation" class="btn btn-success">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <p class="no-content no-content-bordered">
+    No topics - you must add a topic before publishing
+  </p>
+</section>
+
 
 <section class="translations" id="translations">
   <h2>
