@@ -29,13 +29,10 @@
       <h2>Topics (new taxonomy)</h2>
     </legend>
 
-    <p class="lead add-top-margin add-bottom-margin">
+    <p class="add-top-margin add-bottom-margin">
       Changes to topics are published when you save. They do not go through the review process.
     </p>
 
-    <p class="lead">
-      Adding a topic makes content appear on <a href="https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#specialist-tagging-topics">topic pages</a>.
-    </p>
 
     <!-- <div class="suggested-topics">
       <h4>Suggested</h4>
@@ -63,11 +60,9 @@
     <div class="topic-tree">
 
 
-        <p style="font-size: 16px;">
-          <strong>
+        <h4>
             Education, training and skills
-          </strong>
-        </p>
+        </h4>
 
     {% for topic1, children in topics %}
 
@@ -233,7 +228,25 @@
           $(this).prev('p').find('input[type="checkbox"]').prop('checked', true)
         })
       } else {
+        //uncheck children
         $(this).closest('p').next('.topics').find('input[type="checkbox"]').prop('checked', false)
+        // uncheck parents if this is the only sibling checked
+
+        var siblings = $(this).closest('.topics').children('p')
+        var anyChecked = false
+        siblings.each(function(){
+          if ($(this).find('input').is(":checked")){
+            anyChecked = true
+            return false
+          }
+        })
+        if (anyChecked == false){
+          var $parents = $(this).parents('.topics,.topic-tree')
+          $parents.each(function(){
+            var $p = $(this).prev('p')
+            $p.find('input[type="checkbox"]').prop('checked', false)
+          })
+        }
       }
     })
   </script>
