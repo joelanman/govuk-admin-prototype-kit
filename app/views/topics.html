@@ -16,7 +16,7 @@
 
 <div class="tabbable">
   <div class="tab-content">
-    <form class="edition-form js-edition-form" id="new_edition" method="GET" action="/topics" accept-charset="UTF-8" method="post">
+    <form class="edition-form js-edition-form" id="new_edition" method="GET" action="/publication-review" accept-charset="UTF-8" method="post">
 
 <p>
 
@@ -59,22 +59,6 @@
         </li>
       </ul>
     </div> -->
-
-    <div class="content content-bordered" >
-      {% for topic in displaySelected %}
-
-        <p>{{topic|safe}}</p>
-
-      {% endfor %}
-    </div>
-
-    <div class="publishing-controls well">
-      <div class="form-actions">
-        <button class="btn btn-primary btn-lg">Save topic changes</button>
-
-        <span class="or_cancel">&nbsp;&nbsp;<a href="#">Cancel</a></span>
-      </div>
-    </div>
 
     <div class="topic-tree">
 
@@ -254,7 +238,10 @@
     })
   </script>
 
-
+    <h2>Selected topics:</h2>
+    <div class="content content-bordered" >
+          <p>Alternatives to school &gt; <strong>Alternative provision and pupil referral units</strong></p>
+    </div>
 
       <div class="publishing-controls well">
         <div class="form-actions">

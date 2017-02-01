@@ -61,13 +61,90 @@ router.get('/admin', function(req,res){
 
 });
 
+
+router.get('/publication-review', function(req,res){
+
+  var selected = req.query.topic || []
+
+  // ensure it's an array
+  selected = [].concat(selected)
+
+  //console.log(selected)
+
+  var topics = require('../resources/taxonomy.json')['Education, training and skills']
+
+  var checked = function checked(topic){
+    //console.log(topic);
+    var isChecked = selected.indexOf(topic) != -1
+    return isChecked ? ('checked="checked"') : ""
+  }
+
+  /*
+
+    split selected by level
+    loop highest level (eg level4)
+    if value is not the start of any value in displaySelected, add it
+    loop next highest level
+
+  */
+
+  var levels = []
+  var displaySelected = []
+
+  for (var i=0; i<selected.length; i++){
+    var topicPath = selected[i].split("|")
+
+    if (!levels[topicPath.length]){
+      levels[topicPath.length] = [selected[i]]
+    } else {
+      levels[topicPath.length].push(selected[i])
+    }
+  }
+
+  console.dir(levels)
+
+  for (var j = levels.length-1; j>=0; j--){
+    console.log(j)
+    if (!levels[j]){
+      continue
+    }
+    for (var k=0; k < levels[j].length; k++){
+      var found = false
+      for (var l=0; l < displaySelected.length; l++){
+        console.log("levels[j][k]")
+        console.log(levels[j][k])
+        if (displaySelected[l].indexOf(levels[j][k]) === 0){
+          found = true
+          break
+        }
+      }
+      if (!found){
+        displaySelected.push(levels[j][k])
+      }
+    }
+  }
+
+  console.dir(displaySelected)
+
+  for (var m=0; m<displaySelected.length; m++){
+    topicPath = displaySelected[m].split("|")
+    topicPath[topicPath.length-1] = "<strong>" + topicPath[topicPath.length-1] + "</strong>"
+    displaySelected[m] = topicPath.join(" &gt; ")
+  }
+
+  console.dir(displaySelected)
+
+  res.render('publication-review',{topics: topics, checked: checked, displaySelected: displaySelected});
+
+});
+
 router.get('/topics', function(req,res){
 
   var selected = req.query.topic || []
 
   // ensure it's an array
   selected = [].concat(selected)
-  
+
   //console.log(selected)
 
   var topics = require('../resources/taxonomy.json')['Education, training and skills']
