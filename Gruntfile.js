@@ -1,3 +1,5 @@
+const sass = require('node-sass')
+
 module.exports = function(grunt){
   grunt.initConfig({
 
@@ -5,6 +7,11 @@ module.exports = function(grunt){
     sass: {
       dev: {
         options: {
+          functions: {
+            'image-url($img)': function(img) {
+              return new sass.types.String('url("/public/images/' + img.getValue() + '")')
+            }
+          },
           style: "expanded",
           sourceMap: true,
           includePaths: [

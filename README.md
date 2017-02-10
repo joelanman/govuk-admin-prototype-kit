@@ -1,20 +1,14 @@
-# GOV.UK Tagging Prototype
+# GOV.UK Admin Prototype Kit
 
-## To start:
+## Get started
 
-```
-npm start
-```
+Install node modules
 
-## To convert CSV:
+`npm install`
 
-Copy the CSV into the `resources` folder, and rename to `taxonomy.csv`
+Run the kit
 
-Run `node process-data`
-
-This will create a `taxonomy.json` file in `resources`
-
-## GOV.UK admin frontend notes
+`npm start`
 
 To replicate GOV.UK admin front end, this uses:
 

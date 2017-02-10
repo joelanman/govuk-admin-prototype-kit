@@ -35,6 +35,7 @@
     "marked": "^0.3.6",
     "mincer": "^1.5.0",
     "minimist": "^1.2.0",
+    "node-sass": "^4.5.0",
     "nunjucks": "^3.0.0",
     "portscanner": "^2.1.1",
     "prompt": "^1.0.0",
