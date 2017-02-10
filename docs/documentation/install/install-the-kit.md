@@ -2,7 +2,7 @@
 
 ## Download the kit as a zip
 
-The simplest way to get the kit is to [download it as a zip](https://github.com/alphagov/govuk_prototype_kit/archive/v2.1.0.zip). You'll use a new copy of the kit for each new prototype you make. That way your prototypes don’t interfere with each other.
+The simplest way to get the kit is to [download it as a zip](https://github.com/alphagov/govuk_prototype_kit/archive/v3.0.0.zip). You'll use a new copy of the kit for each new prototype you make. That way your prototypes don’t interfere with each other.
 
 ### Decide where you want to keep your prototypes
 
@@ -12,7 +12,7 @@ We recommend keeping all your prototypes in one folder called `projects`.
 
 Create a folder called `projects` in your home folder. You can open your home folder by opening a new finder window, and selecting `go > home` from the top menu.
 
-![Screenshot of a 'projects' folder in the mac home folder](../assets/images/mac-home-folder-projects.png)
+![Screenshot of a 'projects' folder in the mac home folder](/public/images/docs/mac-home-folder-projects.png)
 
 #### Windows users
 
@@ -20,7 +20,7 @@ Create a folder called `projects` in your `Documents` or `My Documents` folder.
 
 ### Unzip the kit
 
-Unzip the kit you downloaded - you should end up with a folder called `govuk_prototype_kit-2.1.0`
+Unzip the kit you downloaded - you should end up with a folder called `govuk_prototype_kit-3.0.0`
 
 ### Rename the kit
 
@@ -69,7 +69,7 @@ To check you’re in the right folder, you can run `ls` (list items):
 ```
 ls
 ```
-You should see a list of files inside the prototype, starting with `CHANGELOG.md, CONTRIBUTING.md, Gruntfile.js etc`
+You should see a list of files inside the prototype, starting with `CHANGELOG.md, CONTRIBUTING.md, gulpfile.js etc`
 
 > If you don’t see these files, check that you installed the kit into the right location and named it correctly.
 
@@ -87,10 +87,5 @@ npm install
 ```
 The install may take up to a minute. Whilst installing it may `WARN` about some items - this is ok. As long as there are no `ERROR`s you can continue.
 
----
-[Previous page (requirements)](requirements.md)
 
-[Next page (run the kit)](run-the-kit.md)
-
----
-[Documentation index](../README.md)
+<a href="run-the-kit.md" class="button">Next (run the kit)</a>

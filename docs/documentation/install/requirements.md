@@ -9,14 +9,14 @@ This guide recommends additional software which will be used in later guides.
 If you have admin access to your machine, you can follow this guide to install the required software.
 
 If you do not have admin access, ask your computer administrator to install:
-* Node.js 4.3.0
+* Node.js 6.x.x
 * Sublime Text 3
 * Command line tools (Mac)
 * Git bash (Windows)
 
 ## Terminal
 
-You'll need a terminal application to install, start and stop the kit. Using a terminal is sometimes called ‘using the command line’. 
+You'll need a terminal application to install, start and stop the kit. Using a terminal is sometimes called ‘using the command line’.
 
 ### Mac users
 
@@ -43,9 +43,9 @@ command to be typed in to terminal
 Once you’ve typed the command, press enter to send it.
 
 
-## Node.js version 4 LTS
+## Node.js version 6 LTS
 
-The kit is designed to work with Node.js version 4 LTS. The current latest is 4.3.0, but the kit works with any 4.x.x version.
+The kit is designed to work with Node.js version 6 LTS. The kit works with any 6.x.x version.
 
 ### Check if you have Node.js
 
@@ -55,22 +55,22 @@ node --version
 ```
 If it says `command not found` or `Error 0x2 starting node.exe --version` you don’t have node and will need to download and install it.
 
-If it says `4.3.0` (or other 4.x.x version) you have the correct version installed.
+If the version number starts with 6 you have the correct version installed.
 
-If it says another number such as `0.12` or `5.x.x`, you need to download and install version 4.
+If it says another number such as `0.12` or `5.x.x`, you need to download and install version 6.
 
 ### Download and install Node.js
 
 #### Mac / Windows users
 
-Download version 4 from [nodejs.org](https://nodejs.org/en/). At the time of writing, this is 4.3.0.
+Download version 6 from [nodejs.org](https://nodejs.org/en/).
 
 Run the installer with all default options.
 
 #### Linux users
 
 Follow the instructions on the [Node.js](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
-) site. Make sure you get version 4, not 5.
+) site. Make sure you get version 6, not 7.
 
 ### Once Node is installed
 
@@ -81,7 +81,7 @@ To check it is installed correctly you can again run:
 node --version
 ```
 
-If it’s installed correctly it should say 4.3.0 (or other 4.x.x version)
+If it’s installed correctly it should show a number starting with 6.
 
 ## Sublime Text
 
@@ -97,14 +97,8 @@ xcode-select --install
 ```
 If you already have command line tools, this will display `xcode-select: error: command line tools are already installed, use "Software Update" to install updates`.
 
-![Screenshot of Command line tools popup message](../assets/images/installing-mavericks-popup.png)
+![Screenshot of Command line tools popup message](/public/images/docs/installing-mavericks-popup.png)
 
 If you don’t have command line tools, it will open an installer. Follow the instructions to install the command line tools.
 
----
-[Previous page (introduction)](introduction.md)
-
-[Next page (install the kit)](install-the-kit.md)
-
----
-[Documentation index](../README.md)
+<a href="install-the-kit.md" class="button">Next (install the kit)</a>
